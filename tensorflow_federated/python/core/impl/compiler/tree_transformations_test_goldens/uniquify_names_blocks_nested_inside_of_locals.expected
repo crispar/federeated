@@ -1,0 +1,49 @@
+Before transformation:
+
+(let
+  a=(let
+    a=(let
+      a=(let
+        a=1
+       in 1)
+     in 1)
+   in 1),
+  a=(let
+    a=(let
+      a=(let
+        a=a
+       in 1)
+     in 1)
+   in 1)
+ in (let
+  a=(let
+    a=(let
+      a=a
+     in 1)
+   in 1)
+ in 1))
+
+After transformation:
+
+(let
+  _var3=(let
+    _var2=(let
+      _var1=(let
+        a=1
+       in 1)
+     in 1)
+   in 1),
+  _var7=(let
+    _var6=(let
+      _var5=(let
+        _var4=_var3
+       in 1)
+     in 1)
+   in 1)
+ in (let
+  _var10=(let
+    _var9=(let
+      _var8=_var7
+     in 1)
+   in 1)
+ in 1))
